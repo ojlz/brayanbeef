@@ -20,10 +20,17 @@ import finalHero from "@/assets/final-hero.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { title: "Brayan Beef — Carnes Premium em Porto Fictício�, MS" },
       {
-        property: "og:image",
-        content: "/favicon.svg",
+        name: "description",
+        content: "Brayan Beef — Carnes Angus premium em Porto Fictício�, MS. Picanha, costela, ancho e fraldinha de alta qualidade. Açougue artesanal com entrega pelo WhatsApp.",
       },
+      { property: "og:title", content: "Brayan Beef — Carnes Premium em Porto Fictício�, MS" },
+      {
+        property: "og:description",
+        content: "Carnes Angus premium em Porto Fictício�, MS. Picanha, costela, ancho e fraldinha selecionados.",
+      },
+      { property: "og:image", content: "https://brayanbeef.vercel.app/img/picanha.jpg" },
     ],
   }),
   component: Index,
@@ -534,6 +541,16 @@ function Index() {
           <div className="grid grid-cols-2 gap-2 px-2 md:grid-cols-4 md:gap-3 md:px-3">
             {[gallery1, gallery2, gallery3, gallery4, gallery5, gallery2, gallery1, gallery4].map(
               (img, i) => {
+                const altTexts = [
+                  "Galeria Brayan Beef - churrasco artesanal",
+                  "Galeria Brayan Beef - corte de carne premium",
+                  "Galeria Brayan Beef - preparo artesanal",
+                  "Galeria Brayan Beef - carne grelhada",
+                  "Galeria Brayan Beef - presentação premium",
+                  "Galeria Brayan Beef - corte de carne premium",
+                  "Galeria Brayan Beef - churrasco artesanal",
+                  "Galeria Brayan Beef - carne grelhada",
+                ];
                 // vary entrance per index
                 const variants = [
                   { initial: { opacity: 0, clipPath: "inset(100% 0% 0% 0%)" }, whileInView: { opacity: 1, clipPath: "inset(0% 0% 0% 0%)" } },
@@ -559,7 +576,7 @@ function Index() {
                   >
                     <img
                       src={img}
-                      alt=""
+                      alt={altTexts[i] || "Galeria Brayan Beef"}
                       loading="lazy"
                       className="h-full w-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:brightness-110"
                     />

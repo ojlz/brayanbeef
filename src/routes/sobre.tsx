@@ -6,11 +6,17 @@ import { Footer } from "@/components/layout/Footer";
 export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
-      { title: "Sobre — Brayan Beef" },
+      { title: "Sobre — Brayan Beef | Carnes Premium em Porto Fictício�, MS" },
       {
         name: "description",
-        content: "Conheça a história da Brayan Beef em Porto Fictício�, MS.",
+        content: "Conheça a história da Brayan Beef: carnes Angus selecionadas em Porto Fictício�, MS. Açougue artesanal com tradição e qualidade.",
       },
+      { property: "og:title", content: "Sobre — Brayan Beef" },
+      {
+        property: "og:description",
+        content: "Conheça a história da Brayan Beef: carnes Angus selecionadas em Porto Fictício�, MS.",
+      },
+      { property: "og:image", content: "https://brayanbeef.vercel.app/img/picanha.jpg" },
     ],
   }),
   component: SobrePage,

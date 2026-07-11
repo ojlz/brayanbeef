@@ -12,12 +12,18 @@ import { CategoryFilter } from "@/components/products/CategoryFilter";
 export const Route = createFileRoute("/produtos")({
   head: () => ({
     meta: [
-      { title: "Produtos — Brayan Beef" },
+      { title: "Produtos — Brayan Beef | Carnes Premium em Porto Fictício�, MS" },
       {
         name: "description",
         content:
-          "Conheça nossa seleção de carnes premium em Porto Fictício�, MS.",
+          "Conheça nossa seleção de carnes premium em Porto Fictício�, MS. Picanha, costela, ancho, fraldinha Angus e mais.",
       },
+      { property: "og:title", content: "Produtos — Brayan Beef" },
+      {
+        property: "og:description",
+        content: "Carnes Angus premium em Porto Fictício�, MS. Picanha, costela, ancho e fraldinha selecionados.",
+      },
+      { property: "og:image", content: "https://brayanbeef.vercel.app/img/picanha.jpg" },
     ],
   }),
   component: ProdutosPage,

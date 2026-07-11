@@ -8,12 +8,18 @@ import { useBusiness } from "@/hooks/useBusiness";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Brayan Beef" },
+      { title: "Contato — Brayan Beef | Açougue em Porto Fictício�, MS" },
       {
         name: "description",
         content:
-          "Entre em contato com a Brayan Beef em Porto Fictício�, MS. WhatsApp, telefone e localização.",
+          "Entre em contato com a Brayan Beef em Porto Fictício�, MS. WhatsApp, telefone e localização. Faça seu pedido!",
       },
+      { property: "og:title", content: "Contato — Brayan Beef" },
+      {
+        property: "og:description",
+        content: "Entre em contato com a Brayan Beef em Porto Fictício�, MS. WhatsApp, telefone e localização.",
+      },
+      { property: "og:image", content: "https://brayanbeef.vercel.app/img/picanha.jpg" },
     ],
   }),
   component: ContatoPage,

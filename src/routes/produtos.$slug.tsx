@@ -8,10 +8,21 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { OrderModal } from "@/components/products/OrderModal";
 import { trackEvent } from "@/lib/analytics";
+import { productJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+
+const SITE_URL = "https://brayanbeef.vercel.app";
 
 export const Route = createFileRoute("/produtos/$slug")({
   head: ({ params }) => ({
-    meta: [{ title: `${params.slug} — Brayan Beef` }],
+    meta: [
+      { title: `${params.slug.charAt(0).toUpperCase() + params.slug.slice(1)} — Brayan Beef | Carnes Premium` },
+      {
+        name: "description",
+        content: `${params.slug.charAt(0).toUpperCase() + params.slug.slice(1)} — Carnes premium em Porto Fictício�, MS. Brayan Beef.`,
+      },
+      { property: "og:title", content: `${params.slug.charAt(0).toUpperCase() + params.slug.slice(1)} — Brayan Beef` },
+      { property: "og:image", content: `${SITE_URL}/img/${params.slug}.jpg` },
+    ],
   }),
   component: ProductDetailPage,
 });
@@ -70,6 +81,35 @@ function ProductDetailPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+
+      {/* JSON-LD Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            productJsonLd({
+              name: product.name,
+              description: product.description || `${product.name} — Carnes premium em Porto Fictício�, MS`,
+              image: product.images[0] || "/img/picanha.jpg",
+              price: finalPrice,
+              unit: product.unit,
+              available: product.available,
+            })
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Início", url: "/" },
+              { name: "Produtos", url: "/produtos" },
+              { name: product.name, url: `/produtos/${product.slug}` },
+            ])
+          ),
+        }}
+      />
 
       <main className="pt-32 pb-24">
         <div className="mx-auto max-w-[1600px] px-6 md:px-10">

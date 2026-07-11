@@ -12,6 +12,9 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { WhatsAppButton } from "../components/layout/WhatsAppButton";
+import { localBusinessJsonLd, websiteJsonLd } from "../lib/seo";
+
+const SITE_URL = "https://brayanbeef.vercel.app";
 
 
 function NotFoundComponent() {
@@ -93,23 +96,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Brayan Beef" },
+      { title: "Brayan Beef ‚Äî Carnes Premium em Porto Fict√≠cio≠, MS" },
       {
         name: "description",
         content:
-          "Brayan Beef Experience showcases premium meats with a cinematic, high-quality digital presentation.",
+          "Brayan Beef ‚Äî Carnes Angus premium em Porto Fict√≠cio≠, MS. Picanha, costela, ancho e fraldinha de alta qualidade. A√ßougue artesanal com entrega pelo WhatsApp.",
       },
-      { property: "og:title", content: "Brayan Beef" },
+      { property: "og:title", content: "Brayan Beef ‚Äî Carnes Premium em Porto Fict√≠cio≠, MS" },
       {
         property: "og:description",
-        content: "Brayan Beef Experience showcases premium meats with a cinematic, high-quality digital presentation.",
+        content: "Carnes Angus premium em Porto Fict√≠cio≠, MS. Picanha, costela, ancho e fraldinha selecionados.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:site_name", content: "Brayan Beef" },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:image", content: `${SITE_URL}/img/picanha.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Brayan Beef" },
-      { name: "twitter:description", content: "Brayan Beef Experience showcases premium meats with a cinematic, high-quality digital presentation." },
-      { property: "og:image", content: "/favicon.svg" },
-      { name: "twitter:image", content: "/favicon.svg" },
+      { name: "twitter:title", content: "Brayan Beef ‚Äî Carnes Premium em Porto Fict√≠cio≠, MS" },
+      { name: "twitter:description", content: "Carnes Angus premium em Porto Fict√≠cio≠, MS. Picanha, costela, ancho e fraldinha selecionados." },
+      { name: "twitter:image", content: `${SITE_URL}/img/picanha.jpg` },
+      { name: "theme-color", content: "#8B0000" },
+      { name: "robots", content: "index, follow" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify(websiteJsonLd()),
+      },
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify(localBusinessJsonLd()),
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
