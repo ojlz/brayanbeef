@@ -1,0 +1,15 @@
+{
+  "id": "ancho",
+  "name": "Ancho",
+  "slug": "ancho",
+  "description": "Corte do dorso bovino, extremamente macio e com sabor suave. Perfeito para grelhar rapidamente em pedra ou chapa.",
+  "price": 79.90,
+  "unit": "kg",
+  "weight": "1kg",
+  "category": "carnes-vermelhas",
+  "images": ["/img/ancho.jpg"],
+  "featured": false,
+  "promotion": null,
+  "available": true,
+  "meta": ["Hereford", "Grelhado"]
+}

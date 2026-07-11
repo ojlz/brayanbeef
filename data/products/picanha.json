@@ -1,0 +1,15 @@
+{
+  "id": "picanha",
+  "name": "Picanha",
+  "slug": "picanha",
+  "description": "A rainha do churrasco. Corte nobre com marmorização perfeita, ideal para assar inteira ou em fatias generosas. Sabor inconfundível e textura macia.",
+  "price": 89.90,
+  "unit": "kg",
+  "weight": "1kg",
+  "category": "carnes-vermelhas",
+  "images": ["/img/picanha.jpg"],
+  "featured": true,
+  "promotion": { "discount": 10, "label": "-10%" },
+  "available": true,
+  "meta": ["Angus", "Maturada", "Premium"]
+}

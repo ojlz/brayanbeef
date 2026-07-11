@@ -1,0 +1,15 @@
+{
+  "id": "costela",
+  "name": "Costela",
+  "slug": "costela",
+  "description": "Costela bovina com ossos e carne entre eles. Ideal para churrasco lento, defumado ou assado. Sabor intenso e carnudo.",
+  "price": 49.90,
+  "unit": "kg",
+  "weight": "2kg",
+  "category": "carnes-vermelhas",
+  "images": ["/img/costela.jpg"],
+  "featured": false,
+  "promotion": null,
+  "available": true,
+  "meta": ["Defumada", "Slow BBQ"]
+}

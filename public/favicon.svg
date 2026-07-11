@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Outer circle -->
+  <circle cx="256" cy="256" r="256" fill="#8B0000"/>
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="#ffffff" stroke-width="6"/>
+  <!-- Inner circle -->
+  <circle cx="256" cy="256" r="210" fill="#8B0000"/>
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="195" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <!-- Text: BRAYAN -->
+  <text x="256" y="250" text-anchor="middle" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="110" fill="#ffffff" letter-spacing="6">BRAYAN</text>
+  <!-- V-check mark in the Y -->
+  <!-- Text: ★ BEEF ★ -->
+  <text x="256" y="310" text-anchor="middle" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="50" fill="#ffffff" letter-spacing="12">BEEF</text>
+  <!-- Decorative dots between stars and BEEF -->
+  <circle cx="160" cy="295" r="4" fill="#ffffff"/>
+  <circle cx="352" cy="295" r="4" fill="#ffffff"/>
+</svg>

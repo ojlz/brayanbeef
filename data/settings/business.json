@@ -1,0 +1,35 @@
+{
+  "name": "Brayan Beef",
+  "slogan": "Aqui fazemos do seu jeito!",
+  "phone": "(00) 90000-0009",
+  "whatsapp": "5500090000009",
+  "address": {
+    "street": "Av. Fictícia",
+    "number": "333",
+    "neighborhood": "Centro",
+    "city": "Porto Fictício�",
+    "state": "MS",
+    "zip": "00000-000"
+  },
+  "coordinates": {
+    "lat": -23.0308,
+    "lng": -54.1941
+  },
+  "hours": {
+    "seg": { "open": "08:00", "close": "20:30" },
+    "ter": { "open": "08:00", "close": "20:30" },
+    "qua": { "open": "08:00", "close": "20:30" },
+    "qui": { "open": "08:00", "close": "20:30" },
+    "sex": { "open": "08:00", "close": "20:30" },
+    "sab": { "open": "08:00", "close": "20:30" },
+    "dom": { "open": "08:00", "close": "13:00" }
+  },
+  "rating": {
+    "value": 4.8,
+    "reviews": 63
+  },
+  "social": {
+    "instagram": "https://instagram.com/brayanbeef",
+    "facebook": "https://facebook.com/brayanbeef"
+  }
+}

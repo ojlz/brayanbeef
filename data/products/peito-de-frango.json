@@ -1,0 +1,15 @@
+{
+  "id": "peito-de-frango",
+  "name": "Peito de Frango",
+  "slug": "peito-de-frango",
+  "description": "Peito de frango fresco e sem osso. Versátil e magro, ideal para grelhar, assar ou empanar.",
+  "price": 24.90,
+  "unit": "kg",
+  "weight": "1kg",
+  "category": "aves",
+  "images": ["/img/frango.jpg"],
+  "featured": false,
+  "promotion": null,
+  "available": true,
+  "meta": ["Fresco", "Magro"]
+}
