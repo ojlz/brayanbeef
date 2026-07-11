@@ -1,6 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { writeJSON } from "@/lib/github";
 import { verifyToken } from "@/lib/auth";
+import { z } from "zod";
+
+const WriteSchema = z.object({
+  path: z.string().min(1).max(200).regex(/^[a-zA-Z0-9_\-\/]+$/, "Invalid path"),
+  data: z.unknown(),
+  message: z.string().max(200).optional(),
+});
 
 export const Route = createFileRoute("/api/github/write")({
   server: {
@@ -18,7 +25,17 @@ export const Route = createFileRoute("/api/github/write")({
         }
 
         try {
-          const { path, data, message } = await request.json();
+          const body = await request.json();
+          const parsed = WriteSchema.safeParse(body);
+
+          if (!parsed.success) {
+            return new Response(
+              JSON.stringify({ error: "Dados inválidos", details: parsed.error.flatten() }),
+              { status: 400, headers: { "Content-Type": "application/json" } }
+            );
+          }
+
+          const { path, data, message } = parsed.data;
           await writeJSON(path, data, message || `Update ${path}`);
 
           return new Response(JSON.stringify({ success: true }), {
@@ -27,10 +44,7 @@ export const Route = createFileRoute("/api/github/write")({
         } catch {
           return new Response(
             JSON.stringify({ error: "Failed to write" }),
-            {
-              status: 500,
-              headers: { "Content-Type": "application/json" },
-            }
+            { status: 500, headers: { "Content-Type": "application/json" } }
           );
         }
       },

@@ -1,5 +1,5 @@
 import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_REPO = process.env.GITHUB_REPO;
@@ -8,9 +8,27 @@ const DATA_DIR = join(process.cwd(), "data");
 
 const isLocal = !GITHUB_TOKEN;
 
+// Paths that should never be readable via the API
+const BLOCKED_PATHS = ["settings/admin"];
+
 interface GitHubContent {
   sha: string;
   content: string;
+}
+
+/**
+ * Validate that a path is safe (no traversal, no blocked paths).
+ */
+function validatePath(path: string): void {
+  if (path.includes("..")) {
+    throw new Error("Invalid path: traversal not allowed");
+  }
+  if (!/^[a-zA-Z0-9_\-\/]+$/.test(path)) {
+    throw new Error("Invalid path: only alphanumeric, hyphens, underscores and slashes allowed");
+  }
+  if (BLOCKED_PATHS.some((blocked) => path === blocked || path.startsWith(blocked + "/"))) {
+    throw new Error("Access denied");
+  }
 }
 
 async function ensureDir(dir: string) {
@@ -18,6 +36,10 @@ async function ensureDir(dir: string) {
 }
 
 async function localReadJSON<T>(localPath: string): Promise<T> {
+  const resolved = resolve(localPath);
+  if (!resolved.startsWith(resolve(DATA_DIR))) {
+    throw new Error("Access denied: path traversal");
+  }
   const content = await readFile(localPath, "utf-8");
   return JSON.parse(content);
 }
@@ -26,12 +48,20 @@ async function localWriteJSON<T>(
   localPath: string,
   data: T
 ): Promise<void> {
+  const resolved = resolve(localPath);
+  if (!resolved.startsWith(resolve(DATA_DIR))) {
+    throw new Error("Access denied: path traversal");
+  }
   await ensureDir(join(localPath, ".."));
   await writeFile(localPath, JSON.stringify(data, null, 2), "utf-8");
 }
 
 async function localListFiles(dirPath: string): Promise<string[]> {
   try {
+    const resolved = resolve(dirPath);
+    if (!resolved.startsWith(resolve(DATA_DIR))) {
+      throw new Error("Access denied: path traversal");
+    }
     const entries = await readdir(dirPath, { withFileTypes: true });
     return entries
       .filter((e) => e.isFile() && e.name.endsWith(".json"))
@@ -42,9 +72,11 @@ async function localListFiles(dirPath: string): Promise<string[]> {
 }
 
 /**
- * Read a JSON file. Path is relative to data/ directory (e.g. "products" or "products/picanha").
+ * Read a JSON file. Path is relative to data/ directory.
  */
 export async function readJSON<T>(path: string): Promise<T> {
+  validatePath(path);
+
   if (isLocal) {
     const localPath = join(DATA_DIR, path + ".json");
     return localReadJSON<T>(localPath);
@@ -59,7 +91,7 @@ export async function readJSON<T>(path: string): Promise<T> {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to read ${path}: ${response.statusText}`);
+    throw new Error("Not found");
   }
 
   const data: GitHubContent = await response.json();
@@ -75,6 +107,8 @@ export async function writeJSON<T>(
   data: T,
   message: string
 ): Promise<void> {
+  validatePath(path);
+
   if (isLocal) {
     const localPath = join(DATA_DIR, path + ".json");
     await localWriteJSON<T>(localPath, data);
@@ -119,14 +153,16 @@ export async function writeJSON<T>(
   );
 
   if (!putResponse.ok) {
-    throw new Error(`Failed to write ${path}: ${putResponse.statusText}`);
+    throw new Error("Failed to write");
   }
 }
 
 /**
- * List JSON files in a directory. Directory is relative to data/ (e.g. "products").
+ * List JSON files in a directory.
  */
 export async function listFiles(directory: string): Promise<string[]> {
+  validatePath(directory);
+
   if (isLocal) {
     const dirPath = join(DATA_DIR, directory);
     return localListFiles(dirPath);
@@ -141,7 +177,7 @@ export async function listFiles(directory: string): Promise<string[]> {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to list ${directory}: ${response.statusText}`);
+    return [];
   }
 
   const data = await response.json();

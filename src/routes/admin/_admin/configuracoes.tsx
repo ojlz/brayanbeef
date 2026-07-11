@@ -128,8 +128,13 @@ function ConfiguracoesPage() {
       return;
     }
 
-    if (newPassword.length < 6) {
-      setPasswordError("Nova senha deve ter pelo menos 6 caracteres");
+    if (newPassword.length < 8) {
+      setPasswordError("Nova senha deve ter pelo menos 8 caracteres");
+      return;
+    }
+
+    if (!/[A-Z]/.test(newPassword) || !/[a-z]/.test(newPassword) || !/[0-9]/.test(newPassword)) {
+      setPasswordError("Senha deve conter maiúsculas, minúsculas e números");
       return;
     }
 
@@ -490,6 +495,9 @@ function ConfiguracoesPage() {
               />
             </div>
           </div>
+          <p className="mt-3 text-[11px] text-foreground/30">
+            Mínimo 8 caracteres, com maiúsculas, minúsculas e números.
+          </p>
           {passwordError && (
             <p className="mt-3 text-sm text-red-400">{passwordError}</p>
           )}

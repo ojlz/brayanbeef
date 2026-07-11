@@ -38,8 +38,13 @@ function LoginPage() {
       return;
     }
 
-    if (password.length < 6) {
-      setInitError("Senha deve ter pelo menos 6 caracteres");
+    if (password.length < 8) {
+      setInitError("Senha deve ter pelo menos 8 caracteres");
+      return;
+    }
+
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+      setInitError("Senha deve conter maiúsculas, minúsculas e números");
       return;
     }
 

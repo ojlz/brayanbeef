@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { verifyToken, changePassword } from "@/lib/auth";
+import { z } from "zod";
+
+const ChangePasswordSchema = z.object({
+  currentPassword: z.string().min(1),
+  newPassword: z.string().min(8).max(200),
+});
 
 export const Route = createFileRoute("/api/auth/change-password")({
   server: {
@@ -25,22 +31,17 @@ export const Route = createFileRoute("/api/auth/change-password")({
             );
           }
 
-          const { currentPassword, newPassword } = await request.json();
+          const body = await request.json();
+          const parsed = ChangePasswordSchema.safeParse(body);
 
-          if (!currentPassword || !newPassword) {
+          if (!parsed.success) {
             return new Response(
-              JSON.stringify({ error: "Preencha todos os campos" }),
+              JSON.stringify({ error: "Dados inválidos", details: parsed.error.flatten() }),
               { status: 400, headers: { "Content-Type": "application/json" } }
             );
           }
 
-          if (newPassword.length < 6) {
-            return new Response(
-              JSON.stringify({ error: "Nova senha deve ter pelo menos 6 caracteres" }),
-              { status: 400, headers: { "Content-Type": "application/json" } }
-            );
-          }
-
+          const { currentPassword, newPassword } = parsed.data;
           const result = await changePassword(currentPassword, newPassword);
 
           if (!result.success) {
@@ -54,8 +55,7 @@ export const Route = createFileRoute("/api/auth/change-password")({
             JSON.stringify({ success: true }),
             { status: 200, headers: { "Content-Type": "application/json" } }
           );
-        } catch (e) {
-          console.error("CHANGE PASSWORD ERROR:", e);
+        } catch {
           return new Response(
             JSON.stringify({ error: "Erro interno" }),
             { status: 500, headers: { "Content-Type": "application/json" } }

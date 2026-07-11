@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { getAdminCredentials, saveAdminCredentials } from "@/lib/auth";
+import { getAdminCredentials, saveAdminCredentials, validatePasswordStrength } from "@/lib/auth";
+import { z } from "zod";
+
+const InitSchema = z.object({
+  username: z.string().min(3).max(50).regex(/^[a-zA-Z0-9_]+$/, "Apenas letras, números e underscore"),
+  password: z.string().min(8).max(200),
+});
 
 export const Route = createFileRoute("/api/auth/init")({
   server: {
@@ -21,18 +27,22 @@ export const Route = createFileRoute("/api/auth/init")({
             );
           }
 
-          const { username, password } = await request.json();
+          const body = await request.json();
+          const parsed = InitSchema.safeParse(body);
 
-          if (!username || !password) {
+          if (!parsed.success) {
             return new Response(
-              JSON.stringify({ error: "Usuário e senha são obrigatórios" }),
+              JSON.stringify({ error: "Dados inválidos", details: parsed.error.flatten() }),
               { status: 400, headers: { "Content-Type": "application/json" } }
             );
           }
 
-          if (password.length < 6) {
+          const { username, password } = parsed.data;
+
+          const strengthError = validatePasswordStrength(password);
+          if (strengthError) {
             return new Response(
-              JSON.stringify({ error: "Senha deve ter pelo menos 6 caracteres" }),
+              JSON.stringify({ error: strengthError }),
               { status: 400, headers: { "Content-Type": "application/json" } }
             );
           }
@@ -43,8 +53,7 @@ export const Route = createFileRoute("/api/auth/init")({
             JSON.stringify({ success: true }),
             { status: 200, headers: { "Content-Type": "application/json" } }
           );
-        } catch (e) {
-          console.error("INIT ERROR:", e);
+        } catch {
           return new Response(
             JSON.stringify({ error: "Erro ao inicializar" }),
             { status: 500, headers: { "Content-Type": "application/json" } }
