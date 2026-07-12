@@ -275,7 +275,7 @@ function Index() {
             </h2>
           </FadeIn>
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
-            {["/img/costela.jpg", "/img/Espetoreal.jpg", "/img/Cortes separados.jpg", "/img/sobre.jpg", "/img/Cortes2.jpg", "/img/frango.jpg"].map((img, i) => (
+            {["/img/costela.jpg", "/img/Espetoreal.jpg", "/img/Cortes separados.jpg", "/img/sobre.jpg", "/img/Cortes2.jpg", "/img/hero-brayan.jpg"].map((img, i) => (
               <ScaleIn key={i} delay={i * 0.08}>
                 <div className="group overflow-hidden rounded-2xl">
                   <img src={img} alt={`Brayan Beef ${i + 1}`} className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
@@ -384,11 +384,20 @@ function Index() {
               </div>
             </FadeIn>
             <ScaleIn delay={0.15}>
-              <div className="h-full min-h-[400px] rounded-2xl overflow-hidden shadow-card">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3697.6!2d-54.1941!3d-23.0308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBrayan+Beef!5e0!3m2!1spt-BR!2sbr!4v1"
-                  width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade" title="Localização Brayan Beef" />
+              <div className="h-full min-h-[400px] rounded-2xl overflow-hidden shadow-card bg-[#1a1a1a] flex items-center justify-center">
+                <a
+                  href="https://www.google.com/maps/search/Brayan+Beef+Porto Fictício�"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex flex-col items-center gap-4 text-center p-8 hover:text-accent transition-colors"
+                >
+                  <MapPin size={48} className="text-accent" />
+                  <p className="font-display text-xl font-black">{street}, {number}</p>
+                  <p className="text-sm text-white/50">{neighborhood} — {city}, {state}</p>
+                  <span className="btn-primary !h-12 !text-xs mt-2">
+                    <MapPin size={16} /> Abrir no Google Maps
+                  </span>
+                </a>
               </div>
             </ScaleIn>
           </div>
