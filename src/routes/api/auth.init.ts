@@ -53,9 +53,10 @@ export const Route = createFileRoute("/api/auth/init")({
             JSON.stringify({ success: true }),
             { status: 200, headers: { "Content-Type": "application/json" } }
           );
-        } catch {
+        } catch (e: any) {
+          console.error("auth.init error:", e?.message, e?.stack);
           return new Response(
-            JSON.stringify({ error: "Erro ao inicializar" }),
+            JSON.stringify({ error: "Erro ao inicializar", detail: e?.message }),
             { status: 500, headers: { "Content-Type": "application/json" } }
           );
         }

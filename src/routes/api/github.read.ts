@@ -60,8 +60,9 @@ export const Route = createFileRoute("/api/github/read")({
           return new Response(JSON.stringify(items), {
             headers: { "Content-Type": "application/json" },
           });
-        } catch {
-          return new Response(JSON.stringify({ error: "Not found" }), {
+        } catch (e: any) {
+          console.error(`github.read error for path "${path}":`, e?.message);
+          return new Response(JSON.stringify({ error: "Not found", detail: e?.message }), {
             status: 404,
             headers: { "Content-Type": "application/json" },
           });

@@ -8,8 +8,9 @@ const DATA_DIR = join(process.cwd(), "data");
 
 const isLocal = !GITHUB_TOKEN;
 
-// Paths that should never be readable via the API
-const BLOCKED_PATHS = ["settings/admin"];
+// Paths that require auth to read via the API (handled in github.read.ts)
+// Note: settings/admin is NOT blocked here — auth system needs to read/write it
+const BLOCKED_PATHS: string[] = [];
 
 interface GitHubContent {
   sha: string;
