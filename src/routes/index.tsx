@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useBusiness } from "@/hooks/useBusiness";
 import { trackEvent } from "@/lib/analytics";
 import { MessageCircle, Star, MapPin, Phone, Clock, ChevronRight, Check, ShieldCheck, Flame, Truck, Users } from "lucide-react";
+import { Header } from "@/components/layout/Header";
 import type { Product } from "@/types/product";
 
 export const Route = createFileRoute("/")({
@@ -96,6 +97,7 @@ function Index() {
 
   return (
     <main className="bg-black text-white">
+      <Header variant="glass" />
 
       {/* ===== HERO ===== */}
       <section className="relative min-h-screen overflow-hidden bg-black">
