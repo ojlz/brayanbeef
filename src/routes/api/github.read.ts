@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { readJSON, listFiles } from "@/lib/github";
 import { verifyToken } from "@/lib/auth";
 
-// Paths that require authentication to read
-const AUTH_REQUIRED_PATHS = ["settings"];
+// Only admin credentials require auth — business settings are public
+const AUTH_REQUIRED_PATHS = ["settings/admin"];
 
 export const Route = createFileRoute("/api/github/read")({
   server: {

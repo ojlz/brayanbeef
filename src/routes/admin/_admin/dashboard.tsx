@@ -107,10 +107,7 @@ function DashboardPage() {
       value: a.whatsappClicks.toString(),
       sub: "todos os CTAs",
       icon: MessageCircle,
-      gradient: "from-emerald-500/25 to-green-600/5",
-      glow: "group-hover:shadow-emerald-500/20",
-      accent: "text-emerald-300",
-      ring: "bg-emerald-500/15 text-emerald-300",
+      ring: "bg-accent/20 text-accent",
       hint: "contatos iniciados",
     },
     {
@@ -118,10 +115,7 @@ function DashboardPage() {
       value: productWhatsappClicks.toString(),
       sub: "enviar no WhatsApp",
       icon: MousePointerClick,
-      gradient: "from-red-500/25 to-rose-600/5",
-      glow: "group-hover:shadow-red-500/20",
-      accent: "text-red-300",
-      ring: "bg-red-500/15 text-red-300",
+      ring: "bg-accent/20 text-accent",
       hint: "pedidos pelo catálogo",
     },
     {
@@ -129,10 +123,7 @@ function DashboardPage() {
       value: productViews.toString(),
       sub: "páginas de produto",
       icon: Eye,
-      gradient: "from-blue-500/25 to-cyan-600/5",
-      glow: "group-hover:shadow-blue-500/20",
-      accent: "text-blue-300",
-      ring: "bg-blue-500/15 text-blue-300",
+      ring: "bg-accent/20 text-accent",
       hint: "interesse no catálogo",
     },
     {
@@ -140,10 +131,7 @@ function DashboardPage() {
       value: a.pageViews.toString(),
       sub: "page views",
       icon: TrendingUp,
-      gradient: "from-violet-500/25 to-purple-600/5",
-      glow: "group-hover:shadow-violet-500/20",
-      accent: "text-violet-300",
-      ring: "bg-violet-500/15 text-violet-300",
+      ring: "bg-accent/20 text-accent",
       hint: "tráfego geral",
     },
     {
@@ -151,10 +139,7 @@ function DashboardPage() {
       value: `${conversion}%`,
       sub: "produto → WhatsApp",
       icon: Flame,
-      gradient: "from-amber-500/25 to-orange-600/5",
-      glow: "group-hover:shadow-amber-500/20",
-      accent: "text-amber-300",
-      ring: "bg-amber-500/15 text-amber-300",
+      ring: "bg-accent/20 text-accent",
       hint: "cliques / views",
     },
     {
@@ -162,10 +147,7 @@ function DashboardPage() {
       value: products.length.toString(),
       sub: "no catálogo",
       icon: Package,
-      gradient: "from-sky-500/25 to-indigo-600/5",
-      glow: "group-hover:shadow-sky-500/20",
-      accent: "text-sky-300",
-      ring: "bg-sky-500/15 text-sky-300",
+      ring: "bg-accent/20 text-accent",
       hint: "ativo no site",
     },
   ];
@@ -305,39 +287,31 @@ function DashboardPage() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className={`stat-card group glass relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.015] hover:shadow-2xl ${stat.glow}`}
+              className={`stat-card group relative overflow-hidden rounded-2xl border border-white/10 bg-[#111] p-6 transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.015] hover:shadow-2xl hover:shadow-accent/10`}
             >
-              <div
-                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-70 transition-opacity duration-500 group-hover:opacity-100`}
-              />
-
               <div className="relative z-10">
                 <div className="flex items-start justify-between">
                   <div
-                    className={`flex h-11 w-11 items-center justify-center rounded-2xl ${stat.ring} transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                    className={`flex h-11 w-11 items-center justify-center rounded-xl ${stat.ring} transition-transform duration-500 group-hover:scale-110`}
                   >
                     <stat.icon size={20} />
                   </div>
                 </div>
 
-                <p className="mt-5 font-display text-3xl font-bold tracking-tight text-foreground">
+                <p className="mt-5 font-display text-3xl font-black tracking-tight text-white">
                   <AnimatedNumber value={stat.value} />
                 </p>
                 <div className="mt-1 flex items-center justify-between">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-foreground/40">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-white/40">
                     {stat.label}
                   </span>
-                  <span className="text-[11px] text-foreground/30">
+                  <span className="text-[11px] text-white/30">
                     {stat.sub}
                   </span>
                 </div>
-                <p className="mt-2 text-[11px] text-foreground/30">
+                <p className="mt-2 text-[11px] text-white/30">
                   {stat.hint}
                 </p>
-              </div>
-
-              <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute -inset-y-2 left-0 w-1/3 animate-sheen bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               </div>
             </div>
           ))}
