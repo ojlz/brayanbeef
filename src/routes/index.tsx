@@ -151,21 +151,21 @@ function Index() {
               A qualidade que você<br /><span className="text-accent">merece!</span>
             </h2>
           </FadeIn>
-          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-5">
+          <div className="mt-12 grid grid-cols-3 gap-3 md:grid-cols-5 md:gap-5">
             {[
               { icon: ShieldCheck, text: "Carnes selecionadas" },
               { icon: Users, text: "Atendimento personalizado" },
               { icon: Flame, text: "Espetinhos prontos" },
-              { icon: Truck, text: "Produtos frescos diariamente" },
+              { icon: Truck, text: "Frescos diariamente" },
               { icon: Check, text: "Qualidade garantida" },
             ].map((item, i) => (
               <FadeIn key={item.text} delay={i * 0.08}>
-                <div className="card-product flex flex-col items-center gap-3 p-4 md:p-6 text-center">
+                <div className="card-product flex flex-col items-center gap-3 p-3 md:p-6 text-center">
                   <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-accent/20">
                     <item.icon size={22} className="text-accent md:hidden" />
                     <item.icon size={28} className="text-accent hidden md:block" />
                   </div>
-                  <p className="text-xs md:text-sm font-bold leading-tight">{item.text}</p>
+                  <p className="text-[11px] md:text-sm font-bold leading-tight">{item.text}</p>
                 </div>
               </FadeIn>
             ))}
