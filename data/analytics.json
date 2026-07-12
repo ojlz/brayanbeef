@@ -5,7 +5,8 @@
       "visits": 0,
       "pageViews": 4,
       "events": {
-        "product_whatsapp:costela-suina": 1
+        "product_whatsapp:costela-suina": 1,
+        "whatsapp:floating-button": 1
       }
     }
   ]
