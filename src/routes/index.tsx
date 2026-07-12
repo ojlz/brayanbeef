@@ -127,7 +127,7 @@ function Index() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.45 }}
               className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido!`}
-                target="_blank" rel="noreferrer" className="btn-primary">
+                target="_blank" rel="noreferrer" onClick={() => trackEvent("whatsapp", "hero-cta")} className="btn-primary">
                 <MessageCircle size={20} /> Faça seu pedido
               </a>
               <a href="#produtos" className="btn-outline">
@@ -250,6 +250,7 @@ function Index() {
                             {hasDiscount && <span className="ml-1 text-xs text-white/40 line-through">R$ {product.price.toFixed(2)}</span>}
                           </div>
                           <a href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20${encodeURIComponent(product.name)}`}
+                            onClick={() => trackEvent("product_whatsapp", product.id)}
                             target="_blank" rel="noreferrer" className="btn-primary !h-10 !px-4 !text-[11px] w-full sm:w-auto">
                             <MessageCircle size={14} /> Pedir
                           </a>
@@ -307,7 +308,7 @@ function Index() {
             <p className="mt-6 text-xl text-white/70">Cortes selecionados do jeito que você gosta, vem pra cá!</p>
             <p className="mt-2 text-sm text-white/40 uppercase tracking-widest">Estamos te esperando!</p>
             <a href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido!`}
-              target="_blank" rel="noreferrer" className="mt-10 btn-primary !h-16 !px-12 !text-base">
+              target="_blank" rel="noreferrer" onClick={() => trackEvent("whatsapp", "cta-fome")} className="mt-10 btn-primary !h-16 !px-12 !text-base">
               <MessageCircle size={24} /> Faça seu pedido agora
             </a>
           </FadeIn>
