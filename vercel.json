@@ -1,6 +1,20 @@
 {
   "installCommand": "bun install",
-  "buildCommand": "npx nitro build",
-  "outputDirectory": ".vercel/output",
-  "framework": null
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client",
+  "framework": null,
+  "functions": {
+    "dist/server/server.js": {
+      "runtime": "@vercel/node",
+      "includeFiles": [
+        "dist/server/**"
+      ]
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/((?!assets/|img/|favicon\\.svg|robots\\.txt|sitemap\\.xml).*)",
+      "destination": "/dist/server/server.js"
+    }
+  ]
 }
