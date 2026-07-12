@@ -1,63 +1,28 @@
-export interface Analytics {
-  whatsappClicks: number;
-  productClicks: Record<string, number>;
-  productViews: Record<string, number>;
-  pageViews: number;
+export interface AnalyticsEvent {
+  event: string;
+  label?: string;
+  timestamp: number;
 }
 
-const DEFAULT: Analytics = {
-  whatsappClicks: 0,
-  productClicks: {},
-  productViews: {},
-  pageViews: 0,
-};
+export interface DailyStats {
+  date: string;
+  visits: number;
+  pageViews: number;
+  events: Record<string, number>;
+}
 
-export type TrackEvent =
-  | "whatsapp"
-  | "product_whatsapp"
-  | "product_view"
-  | "page_view";
+export interface AnalyticsData {
+  days: DailyStats[];
+}
 
-/**
- * Best-effort client-side analytics. Reads the current snapshot, increments
- * the relevant counter and writes it back via the same GitHub data layer used
- * for products/settings. Failures are silently ignored so tracking never
- * breaks the UI.
- */
-export async function trackEvent(
-  event: TrackEvent,
-  productId?: string
-): Promise<void> {
+export function trackEvent(name: string, label?: string) {
+  if (typeof window === "undefined") return;
+
   try {
-    const res = await fetch("/api/github/read?path=analytics");
-    const current: Analytics = res.ok ? await res.json() : { ...DEFAULT };
-
-    const next: Analytics = {
-      whatsappClicks: current.whatsappClicks ?? 0,
-      productClicks: { ...(current.productClicks || {}) },
-      productViews: { ...(current.productViews || {}) },
-      pageViews: current.pageViews ?? 0,
-    };
-
-    if (event === "whatsapp") next.whatsappClicks += 1;
-    if (event === "page_view") next.pageViews += 1;
-    if (event === "product_whatsapp" && productId) {
-      next.productClicks[productId] = (next.productClicks[productId] || 0) + 1;
-    }
-    if (event === "product_view" && productId) {
-      next.productViews[productId] = (next.productViews[productId] || 0) + 1;
-    }
-
-    await fetch("/api/github/write", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        path: "analytics",
-        data: next,
-        message: `Track analytics: ${event}`,
-      }),
-    });
+    const body: Record<string, string> = { event: name };
+    if (label) body.label = label;
+    navigator.sendBeacon("/api/analytics", new Blob([JSON.stringify(body)], { type: "application/json" }));
   } catch {
-    // Ignore — analytics must never break the experience
+    /* offline */
   }
 }

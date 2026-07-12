@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { useBusiness } from "@/hooks/useBusiness";
 import { useLocation } from "@tanstack/react-router";
+import { trackEvent } from "@/lib/analytics";
 
 export function WhatsAppButton() {
   const { data: business } = useBusiness();
@@ -17,6 +18,7 @@ export function WhatsAppButton() {
       href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido!`}
       target="_blank"
       rel="noreferrer"
+      onClick={() => trackEvent("whatsapp", "floating-button")}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1.5, type: "spring", stiffness: 260, damping: 20 }}

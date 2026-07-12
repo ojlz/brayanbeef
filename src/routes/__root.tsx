@@ -79,8 +79,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   beforeLoad: async ({ location }) => {
-    // Protect admin routes (except login)
+    // Protect admin routes (except login) — client-side only
     if (
+      typeof window !== "undefined" &&
       location.pathname.startsWith("/admin") &&
       location.pathname !== "/admin/login"
     ) {

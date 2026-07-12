@@ -83,7 +83,7 @@ function Index() {
     queryFn: async () => (await fetch("/api/github/read?path=products")).json(),
   });
 
-  useEffect(() => { if (business) trackEvent("page_view"); }, [business]);
+  useEffect(() => { if (business) trackEvent("pageview"); }, [business]);
 
   const featured = products.filter((p) => p.featured).slice(0, 6);
 
