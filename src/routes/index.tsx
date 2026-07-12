@@ -229,44 +229,44 @@ function Index() {
   delete (s4P as unknown as { accelerate?: unknown }).accelerate;
 
   return (
-    <main className="relative bg-background text-foreground">
+    <main className="relative bg-white text-foreground">
       {/* NAV */}
-      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-5 md:px-10 md:py-6">
-        <div className="font-display text-sm tracking-widest text-foreground/90">
+      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-5 bg-white/95 backdrop-blur-md border-b border-line md:px-10 md:py-6">
+        <div className="font-display text-sm tracking-widest text-foreground">
           BRAYAN <span className="text-accent">BEEF</span>
         </div>
         <div className="hidden gap-8 text-xs uppercase tracking-[0.2em] text-foreground/60 md:flex">
-          <a href="#selecao" className="hover:text-foreground transition-colors">
+          <a href="#selecao" className="hover:text-accent transition-colors">
             Seleção
           </a>
-          <a href="#cortes" className="hover:text-foreground transition-colors">
+          <a href="#cortes" className="hover:text-accent transition-colors">
             Cortes
           </a>
-          <a href="#galeria" className="hover:text-foreground transition-colors">
+          <a href="#galeria" className="hover:text-accent transition-colors">
             Galeria
           </a>
-          <Link to="/produtos" className="hover:text-foreground transition-colors">
+          <Link to="/produtos" className="hover:text-accent transition-colors">
             Produtos
           </Link>
-          <Link to="/sobre" className="hover:text-foreground transition-colors">
+          <Link to="/sobre" className="hover:text-accent transition-colors">
             Sobre
           </Link>
-          <Link to="/contato" className="hover:text-foreground transition-colors">
+          <Link to="/contato" className="hover:text-accent transition-colors">
             Contato
           </Link>
         </div>
         <a
-          href={`https://wa.me/${whatsapp}`}
+          href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido!`}
           target="_blank"
           rel="noreferrer"
-          className="text-xs uppercase tracking-[0.2em] text-foreground/90 hover:text-accent transition-colors"
+          className="bg-accent text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] hover:bg-accent/90 transition-colors"
         >
-          WhatsApp <span className="ml-1 inline-block h-1.5 w-1.5 translate-y-[-2px] rounded-full bg-accent animate-pulse-dot" />
+          Pedir Agora
         </a>
       </nav>
 
       {/* ============ HERO ============ */}
-      <section ref={heroRef} className="relative h-[110vh] md:h-[130vh]">
+      <section ref={heroRef} className="relative h-[100vh] md:h-[110vh]">
         <div className="sticky top-0 h-screen overflow-hidden">
           <motion.div
             style={{ scale: heroScale }}
@@ -279,47 +279,56 @@ function Index() {
               width={1920}
               height={1200}
             />
-            {/* grain */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay"
-              style={{
-                backgroundImage:
-                  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>\")",
-              }}
-            />
           </motion.div>
 
-          {/* dim overlay driven by scroll */}
+          {/* red overlay driven by scroll */}
           <motion.div
             style={{ opacity: heroDim }}
-            className="absolute inset-0 bg-background"
+            className="absolute inset-0 bg-accent/80"
           />
-          {/* vignette */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(9,9,9,0.85)_100%)]" />
 
           {/* Content */}
           <motion.div
             style={{ scale: heroLogoScale, y: heroLogoY, opacity: heroLogoOpacity }}
             className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center"
           >
-            <div className="mb-8 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-foreground/60">
-              <span className="h-px w-8 bg-foreground/30" />
+            <div className="mb-6 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-white/70">
+              <span className="h-px w-8 bg-white/40" />
               Porto Fictício� — MS
-              <span className="h-px w-8 bg-foreground/30" />
+              <span className="h-px w-8 bg-white/40" />
             </div>
-            <h1 className="font-display text-[15vw] leading-[0.85] md:text-[9vw]">
+            <h1 className="font-display text-[18vw] leading-[0.85] text-white md:text-[10vw]">
               <SplitWords text="BRAYAN BEEF" />
             </h1>
+            {/* 5 stars signature */}
+            <div className="mt-6 flex items-center gap-2 text-white">
+              <span className="text-2xl">★</span>
+              <span className="text-2xl">★</span>
+              <span className="text-3xl text-white/40">★</span>
+              <span className="text-2xl">★</span>
+              <span className="text-2xl">★</span>
+            </div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 max-w-md text-balance text-sm leading-relaxed text-foreground/70 md:text-base"
+              className="mt-8 max-w-md text-balance text-sm leading-relaxed text-white/80 md:text-base"
             >
               Aqui fazemos
               <br />
               do seu jeito!
             </motion.p>
+            <motion.a
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido!`}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 bg-white text-accent px-8 py-4 text-sm font-bold uppercase tracking-[0.15em] hover:bg-white/90 transition-colors"
+            >
+              Faça seu pedido
+            </motion.a>
           </motion.div>
 
           {/* scroll indicator */}
@@ -327,7 +336,7 @@ function Index() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8, duration: 1 }}
-            className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-foreground/50"
+            className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-white/60"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}

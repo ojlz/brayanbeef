@@ -30,18 +30,18 @@
 :root {
   --radius: 0.25rem;
 
-  /* Brayan Beef palette */
-  --background: oklch(0.08 0 0);          /* #090909 */
-  --foreground: oklch(0.94 0 0);          /* #ECECEC */
-  --surface: oklch(0.11 0 0);             /* #111111 */
-  --surface-2: oklch(0.16 0 0);           /* #1B1B1B */
-  --line: oklch(0.22 0 0 / 0.6);
-  --muted: oklch(0.16 0 0);
-  --muted-foreground: oklch(0.62 0 0);
-  --primary: oklch(0.94 0 0);
-  --primary-foreground: oklch(0.08 0 0);
-  --accent: oklch(0.36 0.14 27);          /* #8B0000 blood */
-  --accent-foreground: oklch(0.94 0 0);
+  /* Brayan Beef palette — Instagram brand: red + white */
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+  --surface: #F5F5F5;
+  --surface-2: #E8E8E8;
+  --line: #D4D4D4;
+  --muted: #E8E8E8;
+  --muted-foreground: #6B7280;
+  --primary: #CC0000;
+  --primary-foreground: #FFFFFF;
+  --accent: #CC0000;
+  --accent-foreground: #FFFFFF;
 }
 
 @layer base {
@@ -103,22 +103,22 @@
 
 /* ---- Glassmorphism utilities (admin dashboard) ---- */
 @utility glass {
-  background: color-mix(in oklab, var(--surface) 55%, transparent);
+  background: color-mix(in oklab, var(--surface) 70%, transparent);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
   box-shadow:
-    0 8px 32px -8px rgba(0, 0, 0, 0.5),
+    0 8px 32px -8px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 0 color-mix(in oklab, var(--foreground) 6%, transparent);
 }
 
 @utility glass-strong {
-  background: color-mix(in oklab, var(--surface) 72%, transparent);
+  background: color-mix(in oklab, var(--surface) 85%, transparent);
   backdrop-filter: blur(28px) saturate(160%);
   -webkit-backdrop-filter: blur(28px) saturate(160%);
   border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
   box-shadow:
-    0 16px 48px -12px rgba(0, 0, 0, 0.6),
+    0 16px 48px -12px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 0 color-mix(in oklab, var(--foreground) 8%, transparent);
 }
 

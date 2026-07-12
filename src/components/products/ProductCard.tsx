@@ -27,7 +27,7 @@ export function ProductCard({ product, onOrder }: ProductCardProps) {
     : product.price;
 
   return (
-    <div className="group relative bg-background border border-line">
+    <div className="group relative bg-white border border-line overflow-hidden">
       {/* Image */}
       <Link to="/produtos/$slug" params={{ slug: product.slug }}>
         <div className="relative aspect-[4/5] overflow-hidden">
@@ -38,20 +38,20 @@ export function ProductCard({ product, onOrder }: ProductCardProps) {
             loading="lazy"
           />
           {hasDiscount && (
-            <span className="absolute left-4 top-4 bg-accent px-3 py-1 text-[10px] font-medium uppercase tracking-wider text-accent-foreground">
-              {discountPercent}% OFF
+            <span className="absolute left-3 top-3 bg-accent px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
+              -{discountPercent}%
             </span>
           )}
         </div>
       </Link>
 
       {/* Info */}
-      <div className="p-5">
+      <div className="p-4">
         <Link to="/produtos/$slug" params={{ slug: product.slug }}>
-          <h3 className="font-display text-base">{product.name}</h3>
+          <h3 className="font-display text-base font-semibold text-foreground">{product.name}</h3>
         </Link>
 
-        <div className="mt-2 flex items-center gap-2">
+        <div className="mt-1.5 flex items-center gap-2">
           {product.meta?.map((tag) => (
             <span
               key={tag}
@@ -62,13 +62,13 @@ export function ProductCard({ product, onOrder }: ProductCardProps) {
           ))}
         </div>
 
-        <div className="mt-4 flex items-center justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="font-display text-lg">
+        <div className="mt-4 flex items-end justify-between">
+          <div>
+            <span className="font-display text-xl font-bold text-accent">
               R$ {discountedPrice.toFixed(2)}
             </span>
             {hasDiscount && (
-              <span className="text-xs text-foreground/40 line-through">
+              <span className="ml-2 text-xs text-foreground/40 line-through">
                 R$ {product.price.toFixed(2)}
               </span>
             )}
@@ -77,7 +77,7 @@ export function ProductCard({ product, onOrder }: ProductCardProps) {
 
           <button
             onClick={() => onOrder(product)}
-            className="flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/30 px-3 py-1.5 text-[10px] font-medium uppercase tracking-wider text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
+            className="flex items-center gap-1.5 bg-accent px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-white hover:bg-accent/90 transition-colors"
           >
             <MessageCircle size={12} />
             Pedir
