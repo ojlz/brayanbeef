@@ -96,7 +96,7 @@ export async function readJSON<T>(path: string): Promise<T> {
   }
 
   const data: GitHubContent = await response.json();
-  const decoded = atob(data.content.replace(/\n/g, ""));
+  const decoded = atob(data.content.replace(/\n/g, "")).replace(/^\uFEFF/, "");
   return JSON.parse(decoded);
 }
 
