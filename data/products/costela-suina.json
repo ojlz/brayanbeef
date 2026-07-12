@@ -1,15 +1,23 @@
-{
-  "id": "costela-suina",
-  "name": "Costela Suína",
-  "slug": "costela-suina",
-  "description": "Costela suína fresca, perfeita para churrasco com molho barbecue defumado.",
-  "price": 34.90,
-  "unit": "kg",
-  "weight": "1.5kg",
-  "category": "suinos",
-  "images": ["/img/costela-suina.jpg"],
-  "featured": false,
-  "promotion": { "discount": 15, "label": "-15%" },
-  "available": true,
-  "meta": ["Defumada", "BBQ"]
+﻿{
+    "id":  "costela-suina",
+    "name":  "Costela SuÃ­na",
+    "slug":  "costela-suina",
+    "description":  "Costela suÃ­na fresca, perfeita para churrasco com molho barbecue defumado.",
+    "price":  34.90,
+    "unit":  "kg",
+    "weight":  "1.5kg",
+    "category":  "suinos",
+    "images":  [
+                   "/img/costela-suina.jpg"
+               ],
+    "featured":  true,
+    "promotion":  {
+                      "discount":  15,
+                      "label":  "-15%"
+                  },
+    "available":  true,
+    "meta":  [
+                 "Defumada",
+                 "BBQ"
+             ]
 }

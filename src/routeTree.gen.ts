@@ -14,7 +14,6 @@ import { Route as ProdutosRouteImport } from './routes/produtos'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProdutosSlugRouteImport } from './routes/produtos.$slug'
-import { Route as ApiDebugRouteImport } from './routes/api/debug'
 import { Route as AdminAdminRouteImport } from './routes/admin/_admin'
 import { Route as AdminAdminIndexRouteImport } from './routes/admin/_admin/index'
 import { Route as ApiGithubWriteRouteImport } from './routes/api/github.write'
@@ -53,11 +52,6 @@ const ProdutosSlugRoute = ProdutosSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ProdutosRoute,
-} as any)
-const ApiDebugRoute = ApiDebugRouteImport.update({
-  id: '/api/debug',
-  path: '/api/debug',
-  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminAdminRoute = AdminAdminRouteImport.update({
   id: '/admin/_admin',
@@ -131,7 +125,6 @@ export interface FileRoutesByFullPath {
   '/produtos': typeof ProdutosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/admin': typeof AdminAdminRouteWithChildren
-  '/api/debug': typeof ApiDebugRoute
   '/produtos/$slug': typeof ProdutosSlugRoute
   '/admin/configuracoes': typeof AdminAdminConfiguracoesRoute
   '/admin/dashboard': typeof AdminAdminDashboardRoute
@@ -151,7 +144,6 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/produtos': typeof ProdutosRouteWithChildren
   '/sobre': typeof SobreRoute
-  '/api/debug': typeof ApiDebugRoute
   '/produtos/$slug': typeof ProdutosSlugRoute
   '/admin/configuracoes': typeof AdminAdminConfiguracoesRoute
   '/admin/dashboard': typeof AdminAdminDashboardRoute
@@ -173,7 +165,6 @@ export interface FileRoutesById {
   '/produtos': typeof ProdutosRouteWithChildren
   '/sobre': typeof SobreRoute
   '/admin/_admin': typeof AdminAdminRouteWithChildren
-  '/api/debug': typeof ApiDebugRoute
   '/produtos/$slug': typeof ProdutosSlugRoute
   '/admin/_admin/configuracoes': typeof AdminAdminConfiguracoesRoute
   '/admin/_admin/dashboard': typeof AdminAdminDashboardRoute
@@ -196,7 +187,6 @@ export interface FileRouteTypes {
     | '/produtos'
     | '/sobre'
     | '/admin'
-    | '/api/debug'
     | '/produtos/$slug'
     | '/admin/configuracoes'
     | '/admin/dashboard'
@@ -216,7 +206,6 @@ export interface FileRouteTypes {
     | '/contato'
     | '/produtos'
     | '/sobre'
-    | '/api/debug'
     | '/produtos/$slug'
     | '/admin/configuracoes'
     | '/admin/dashboard'
@@ -237,7 +226,6 @@ export interface FileRouteTypes {
     | '/produtos'
     | '/sobre'
     | '/admin/_admin'
-    | '/api/debug'
     | '/produtos/$slug'
     | '/admin/_admin/configuracoes'
     | '/admin/_admin/dashboard'
@@ -259,7 +247,6 @@ export interface RootRouteChildren {
   ProdutosRoute: typeof ProdutosRouteWithChildren
   SobreRoute: typeof SobreRoute
   AdminAdminRoute: typeof AdminAdminRouteWithChildren
-  ApiDebugRoute: typeof ApiDebugRoute
   ApiAuthChangePasswordRoute: typeof ApiAuthChangePasswordRoute
   ApiAuthInitRoute: typeof ApiAuthInitRoute
   ApiAuthLoginRoute: typeof ApiAuthLoginRoute
@@ -305,13 +292,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/produtos/$slug'
       preLoaderRoute: typeof ProdutosSlugRouteImport
       parentRoute: typeof ProdutosRoute
-    }
-    '/api/debug': {
-      id: '/api/debug'
-      path: '/api/debug'
-      fullPath: '/api/debug'
-      preLoaderRoute: typeof ApiDebugRouteImport
-      parentRoute: typeof rootRouteImport
     }
     '/admin/_admin': {
       id: '/admin/_admin'
@@ -445,7 +425,6 @@ const rootRouteChildren: RootRouteChildren = {
   ProdutosRoute: ProdutosRouteWithChildren,
   SobreRoute: SobreRoute,
   AdminAdminRoute: AdminAdminRouteWithChildren,
-  ApiDebugRoute: ApiDebugRoute,
   ApiAuthChangePasswordRoute: ApiAuthChangePasswordRoute,
   ApiAuthInitRoute: ApiAuthInitRoute,
   ApiAuthLoginRoute: ApiAuthLoginRoute,

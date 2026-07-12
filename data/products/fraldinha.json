@@ -1,15 +1,20 @@
-{
-  "id": "fraldinha",
-  "name": "Fraldinha",
-  "slug": "fraldinha",
-  "description": "Corte entre o flanco e a coxa, com fibras que absorvem temperos maravilhosamente. Ótima para espetinhos e assados.",
-  "price": 54.90,
-  "unit": "kg",
-  "weight": "1kg",
-  "category": "carnes-vermelhas",
-  "images": ["/img/fraldinha.jpg"],
-  "featured": false,
-  "promotion": null,
-  "available": true,
-  "meta": ["Espetinho", "Assado"]
+﻿{
+    "id":  "fraldinha",
+    "name":  "Fraldinha",
+    "slug":  "fraldinha",
+    "description":  "Corte entre o flanco e a coxa, com fibras que absorvem temperos maravilhosamente. Ã“tima para espetinhos e assados.",
+    "price":  54.90,
+    "unit":  "kg",
+    "weight":  "1kg",
+    "category":  "carnes-vermelhas",
+    "images":  [
+                   "/img/fraldinha.jpg"
+               ],
+    "featured":  true,
+    "promotion":  null,
+    "available":  true,
+    "meta":  [
+                 "Espetinho",
+                 "Assado"
+             ]
 }
