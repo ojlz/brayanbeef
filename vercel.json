@@ -1,13 +1,3 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/client",
-  "framework": null,
-  "functions": {
-    "api/server.js": {
-      "includeFiles": "dist/server/**"
-    }
-  },
-  "rewrites": [
-    { "source": "/((?!assets/|img/|api/|favicon\\.svg|robots\\.txt|sitemap\\.xml).*)", "destination": "/api/server" }
-  ]
+  "framework": "tanstack-start"
 }
