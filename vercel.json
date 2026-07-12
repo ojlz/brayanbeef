@@ -1,18 +1,19 @@
 {
-  "installCommand": "bun install",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
   "framework": null,
   "functions": {
     "dist/server/server.js": {
-      "runtime": "@vercel/node",
-      "includeFiles": "dist/server/**"
+      "runtime": "@vercel/node@22.x"
     }
   },
   "rewrites": [
-    {
-      "source": "/((?!assets/|img/|favicon\\.svg|robots\\.txt|sitemap\\.xml).*)",
-      "destination": "/dist/server/server.js"
-    }
+    { "source": "/assets/(.*)", "destination": "/assets/$1" },
+    { "source": "/img/(.*)", "destination": "/img/$1" },
+    { "source": "/favicon.svg", "destination": "/favicon.svg" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "handle": "filesystem" },
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
