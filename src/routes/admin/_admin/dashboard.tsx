@@ -12,7 +12,6 @@ import {
   Flame,
 } from "lucide-react";
 import type { Product } from "@/types/product";
-import type { Analytics } from "@/lib/analytics";
 
 export const Route = createFileRoute("/admin/_admin/dashboard")({
   head: () => ({
@@ -67,10 +66,10 @@ function DashboardPage() {
     },
   });
 
-  const { data: analytics } = useQuery<Analytics>({
+  const { data: analytics } = useQuery({
     queryKey: ["admin-analytics"],
     queryFn: async () => {
-      const response = await fetch("/api/github/read?path=analytics");
+      const response = await fetch("/api/analytics");
       if (!response.ok) return null;
       return response.json();
     },
@@ -81,11 +80,19 @@ function DashboardPage() {
   const listRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
 
+  // Transform Casa do Pastel format to dashboard format
+  const todayStats = analytics?.today || { pageViews: 0, events: {}, visits: 0 };
   const a = {
-    whatsappClicks: analytics?.whatsappClicks ?? 0,
-    productClicks: analytics?.productClicks ?? {},
-    productViews: analytics?.productViews ?? {},
-    pageViews: analytics?.pageViews ?? 0,
+    whatsappClicks: Object.entries(todayStats.events)
+      .filter(([k]) => k.startsWith("whatsapp"))
+      .reduce((s, [, v]) => s + (v as number), 0),
+    productClicks: Object.entries(todayStats.events)
+      .filter(([k]) => k.startsWith("product_whatsapp"))
+      .reduce((acc, [k, v]) => { const id = k.split(":")[1]; acc[id] = (acc[id] || 0) + (v as number); return acc; }, {} as Record<string, number>),
+    productViews: Object.entries(todayStats.events)
+      .filter(([k]) => k.startsWith("product_view"))
+      .reduce((acc, [k, v]) => { const id = k.split(":")[1]; acc[id] = (acc[id] || 0) + (v as number); return acc; }, {} as Record<string, number>),
+    pageViews: todayStats.pageViews ?? 0,
   };
 
   const productWhatsappClicks = Object.values(a.productClicks).reduce(
