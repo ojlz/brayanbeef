@@ -58,21 +58,25 @@ function AnimatedNumber({
 }
 
 function DashboardPage() {
-  const { data: products = [] } = useQuery<Product[]>({
+  const { data: products = [], isLoading: loadingProducts } = useQuery<Product[]>({
     queryKey: ["admin-products"],
     queryFn: async () => {
       const response = await fetch("/api/github/read?path=products");
       return response.json();
     },
+    staleTime: 30_000,
+    refetchInterval: 30_000,
   });
 
-  const { data: analytics } = useQuery({
+  const { data: analytics, isLoading: loadingAnalytics } = useQuery({
     queryKey: ["admin-analytics"],
     queryFn: async () => {
       const response = await fetch("/api/analytics");
       if (!response.ok) return null;
       return response.json();
     },
+    staleTime: 10_000,
+    refetchInterval: 10_000,
   });
 
   const titleRef = useRef<HTMLDivElement>(null);
@@ -256,6 +260,14 @@ function DashboardPage() {
         <div className="orb absolute left-1/3 top-1/4 h-72 w-72 rounded-full bg-emerald-600/10 blur-3xl animate-float-glow" />
         <div className="orb absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-violet-600/10 blur-3xl animate-float-glow" />
       </div>
+
+      {/* Loading skeleton */}
+      {(loadingProducts || loadingAnalytics) && (
+        <div className="mb-6 flex items-center gap-3 text-white/40">
+          <div className="h-4 w-4 animate-spin rounded-full border-2 border-accent border-t-transparent" />
+          <span className="text-sm">Carregando dados...</span>
+        </div>
+      )}
 
       {/* Content container with 24px section gaps */}
       <div className="flex flex-col gap-6">
