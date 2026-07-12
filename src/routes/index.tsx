@@ -301,7 +301,7 @@ function Index() {
             <h2 className="font-display text-6xl font-black leading-[0.95] md:text-[8vw]">
               BATEU A<br />FOME?
             </h2>
-            <p className="mt-6 text-xl text-white/70">Espetinhos do jeito que você gosta, vem pra cá!</p>
+            <p className="mt-6 text-xl text-white/70">Cortes selecinados do jeito que você gosta, vem pra cá!</p>
             <p className="mt-2 text-sm text-white/40 uppercase tracking-widest">Estamos te esperando!</p>
             <a href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido!`}
               target="_blank" rel="noreferrer" className="mt-10 btn-primary !h-16 !px-12 !text-base">
