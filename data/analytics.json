@@ -1,6 +1,10 @@
 {
-  "whatsappClicks": 0,
-  "productClicks": {},
-  "productViews": {},
-  "pageViews": 1
+  "days": [
+    {
+      "date": "2026-07-12",
+      "visits": 0,
+      "pageViews": 1,
+      "events": {}
+    }
+  ]
 }
