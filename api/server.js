@@ -1,4 +1,8 @@
-const path = require("path");
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // CRITICAL: set CWD to dist/server so relative imports in server.js work
 const serverDir = path.join(__dirname, "..", "dist", "server");
@@ -17,7 +21,7 @@ function getHandler() {
   return handlerPromise;
 }
 
-module.exports = async function vercelHandler(req, res) {
+export default async function vercelHandler(req, res) {
   try {
     const server = await getHandler();
 
@@ -59,4 +63,4 @@ module.exports = async function vercelHandler(req, res) {
     console.error("Handler error:", error?.message);
     res.status(500).json({ error: error?.message || "Internal Server Error" });
   }
-};
+}

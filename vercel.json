@@ -3,7 +3,7 @@
   "outputDirectory": "dist/client",
   "framework": null,
   "functions": {
-    "api/server.cjs": {
+    "api/server.js": {
       "includeFiles": "dist/server/**"
     }
   },
