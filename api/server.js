@@ -1,31 +1,25 @@
 const path = require("path");
-const fs = require("fs");
 
-// Resolve the server entry from dist/
-const serverPath = path.join(__dirname, "..", "dist", "server", "server.js");
+// CRITICAL: set CWD to dist/server so relative imports in server.js work
+const serverDir = path.join(__dirname, "..", "dist", "server");
+process.chdir(serverDir);
 
-// Pre-load all server assets so relative imports work
-const assetsDir = path.join(__dirname, "..", "dist", "server", "assets");
-if (fs.existsSync(assetsDir)) {
-  for (const file of fs.readdirSync(assetsDir)) {
-    if (file.endsWith(".js")) {
-      try { require(path.join(assetsDir, file)); } catch {}
-    }
-  }
-}
+const serverPath = path.join(serverDir, "server.js");
 
 let handlerPromise;
 function getHandler() {
   if (!handlerPromise) {
-    handlerPromise = import(serverPath);
+    handlerPromise = import(serverPath).then((mod) => {
+      const server = mod.default?.default || mod.default || mod;
+      return server;
+    });
   }
   return handlerPromise;
 }
 
 module.exports = async function vercelHandler(req, res) {
   try {
-    const mod = await getHandler();
-    const server = mod.default?.default || mod.default || mod;
+    const server = await getHandler();
 
     const host = req.headers.host || "localhost";
     const url = `https://${host}${req.url}`;
@@ -62,7 +56,7 @@ module.exports = async function vercelHandler(req, res) {
     const buffer = await response.arrayBuffer();
     res.end(Buffer.from(buffer));
   } catch (error) {
-    console.error("Vercel handler error:", error?.message, error?.stack);
-    res.status(500).json({ error: "Internal Server Error", message: error?.message });
+    console.error("Handler error:", error?.message);
+    res.status(500).json({ error: error?.message || "Internal Server Error" });
   }
 };
