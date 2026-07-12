@@ -151,7 +151,7 @@ function Index() {
               A qualidade que você<br /><span className="text-accent">merece!</span>
             </h2>
           </FadeIn>
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-5">
+          <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-5">
             {[
               { icon: ShieldCheck, text: "Carnes selecionadas" },
               { icon: Users, text: "Atendimento personalizado" },
@@ -160,11 +160,12 @@ function Index() {
               { icon: Check, text: "Qualidade garantida" },
             ].map((item, i) => (
               <FadeIn key={item.text} delay={i * 0.08}>
-                <div className="card-product flex flex-col items-center gap-4 p-6 text-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
-                    <item.icon size={28} className="text-accent" />
+                <div className="card-product flex flex-col items-center gap-3 p-4 md:p-6 text-center">
+                  <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full bg-accent/20">
+                    <item.icon size={22} className="text-accent md:hidden" />
+                    <item.icon size={28} className="text-accent hidden md:block" />
                   </div>
-                  <p className="text-sm font-bold leading-tight">{item.text}</p>
+                  <p className="text-xs md:text-sm font-bold leading-tight">{item.text}</p>
                 </div>
               </FadeIn>
             ))}
@@ -238,18 +239,18 @@ function Index() {
                       <div className="relative aspect-[4/3] overflow-hidden">
                         <img src={img} alt={product.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                         {hasDiscount && (
-                          <span className="absolute left-4 top-4 bg-accent px-4 py-2 text-xs font-black text-white rounded-full">-{discount}%</span>
+                          <span className="absolute left-3 top-3 bg-accent px-3 py-1 text-[10px] font-black text-white rounded-full">-{discount}%</span>
                         )}
                       </div>
-                      <div className="p-5">
-                        <h3 className="font-display text-xl font-black">{product.name}</h3>
-                        <div className="mt-4 flex items-end justify-between">
+                      <div className="p-3 md:p-5">
+                        <h3 className="font-display text-base md:text-xl font-black">{product.name}</h3>
+                        <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                           <div>
-                            <span className="font-display text-2xl font-black text-accent">R$ {price.toFixed(2)}</span>
-                            {hasDiscount && <span className="ml-2 text-sm text-white/40 line-through">R$ {product.price.toFixed(2)}</span>}
+                            <span className="font-display text-lg md:text-2xl font-black text-accent">R$ {price.toFixed(2)}</span>
+                            {hasDiscount && <span className="ml-1 text-xs text-white/40 line-through">R$ {product.price.toFixed(2)}</span>}
                           </div>
                           <a href={`https://wa.me/${whatsapp}?text=Ol%C3%A1%2C%20gostaria%20de%20pedir%20${encodeURIComponent(product.name)}`}
-                            target="_blank" rel="noreferrer" className="btn-primary !h-11 !px-4 !text-xs">
+                            target="_blank" rel="noreferrer" className="btn-primary !h-10 !px-4 !text-[11px] w-full sm:w-auto">
                             <MessageCircle size={14} /> Pedir
                           </a>
                         </div>

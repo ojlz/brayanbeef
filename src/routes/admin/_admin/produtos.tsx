@@ -120,19 +120,19 @@ function ProdutosAdminPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="font-display text-3xl">Produtos</h1>
-          <p className="mt-2 text-sm text-foreground/50">
+          <h1 className="font-display text-2xl font-black md:text-3xl">Produtos</h1>
+          <p className="mt-1 text-sm text-white/50">
             {products.length} produtos cadastrados
           </p>
         </motion.div>
         <button
           onClick={handleCreate}
-          className="flex items-center gap-2 border border-accent bg-accent/10 px-4 py-2 text-sm text-accent hover:bg-accent hover:text-foreground transition-colors"
+          className="flex items-center justify-center gap-2 bg-accent px-4 py-2.5 text-sm font-bold text-white hover:bg-accent/90 transition-colors rounded-xl w-full sm:w-auto"
         >
           <Plus size={16} />
           Novo Produto
@@ -140,43 +140,39 @@ function ProdutosAdminPage() {
       </div>
 
       {/* Products table */}
-      <div className="mt-8 overflow-x-auto border border-line">
-        <table className="w-full">
+      <div className="mt-6 md:mt-8 overflow-x-auto border border-white/10 rounded-xl">
+        <table className="w-full min-w-[600px]">
           <thead>
-            <tr className="border-b border-line bg-surface">
-              <th className="px-4 py-3 text-left text-xs uppercase tracking-wider text-foreground/50">
+            <tr className="border-b border-white/10 bg-[#111]">
+              <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-white/40">
                 Nome
               </th>
-              <th className="px-4 py-3 text-left text-xs uppercase tracking-wider text-foreground/50">
+              <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-white/40">
                 Preço
               </th>
-              <th className="px-4 py-3 text-left text-xs uppercase tracking-wider text-foreground/50">
+              <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-white/40 hidden sm:table-cell">
                 Categoria
               </th>
-              <th className="px-4 py-3 text-left text-xs uppercase tracking-wider text-foreground/50">
+              <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-white/40 hidden sm:table-cell">
                 Status
               </th>
-              <th className="px-4 py-3 text-right text-xs uppercase tracking-wider text-foreground/50">
+              <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-white/40">
                 Ações
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-line">
+          <tbody className="divide-y divide-white/10">
             {products.map((product) => (
-              <tr key={product.id} className="hover:bg-surface/50">
-                <td className="px-4 py-3 text-sm">{product.name}</td>
-                <td className="px-4 py-3 text-sm">
+              <tr key={product.id} className="hover:bg-white/5">
+                <td className="px-4 py-3 text-sm font-medium">{product.name}</td>
+                <td className="px-4 py-3 text-sm text-accent font-bold">
                   R$ {product.price.toFixed(2)}
                 </td>
-                <td className="px-4 py-3 text-sm text-foreground/60">
+                <td className="px-4 py-3 text-sm text-white/50 hidden sm:table-cell">
                   {product.category}
                 </td>
-                <td className="px-4 py-3 text-sm">
-                  <span
-                    className={
-                      product.available ? "text-green-500" : "text-red-500"
-                    }
-                  >
+                <td className="px-4 py-3 text-sm hidden sm:table-cell">
+                  <span className={product.available ? "text-emerald-400" : "text-red-400"}>
                     {product.available ? "Ativo" : "Inativo"}
                   </span>
                 </td>
@@ -184,7 +180,7 @@ function ProdutosAdminPage() {
                   <div className="flex items-center justify-end gap-2">
                     <button
                       onClick={() => handleEdit(product)}
-                      className="p-2 text-foreground/40 hover:text-foreground transition-colors"
+                      className="p-2 text-white/40 hover:text-white transition-colors"
                       aria-label="Editar produto"
                     >
                       <Pencil size={14} />
@@ -195,7 +191,7 @@ function ProdutosAdminPage() {
                           deleteMutation.mutate(product.id);
                         }
                       }}
-                      className="p-2 text-foreground/40 hover:text-accent transition-colors"
+                      className="p-2 text-white/40 hover:text-accent transition-colors"
                       aria-label="Excluir produto"
                     >
                       <Trash2 size={14} />
