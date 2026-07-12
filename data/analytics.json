@@ -4,7 +4,9 @@
       "date": "2026-07-12",
       "visits": 0,
       "pageViews": 4,
-      "events": {}
+      "events": {
+        "product_whatsapp:costela-suina": 1
+      }
     }
   ]
 }
