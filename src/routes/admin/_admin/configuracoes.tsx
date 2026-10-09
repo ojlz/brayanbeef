@@ -20,7 +20,7 @@ const defaultSettings: BusinessSettings = {
     street: "",
     number: "",
     neighborhood: "",
-    city: "Porto Fictício�",
+    city: "Porto Fictício",
     state: "MS",
     zip: "",
   },

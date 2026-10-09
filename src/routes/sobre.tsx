@@ -6,15 +6,15 @@ import { Footer } from "@/components/layout/Footer";
 export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
-      { title: "Sobre — Brayan Beef | Carnes Premium em Porto Fictício�, MS" },
+      { title: "Sobre — Brayan Beef | Carnes Premium em Porto Fictício/EX" },
       {
         name: "description",
-        content: "Conheça a história da Brayan Beef: carnes Angus selecionadas em Porto Fictício�, MS. Açougue artesanal com tradição e qualidade.",
+        content: "Conheça a história da Brayan Beef: carnes Angus selecionadas em Porto Fictício/EX. Açougue artesanal com tradição e qualidade.",
       },
       { property: "og:title", content: "Sobre — Brayan Beef" },
       {
         property: "og:description",
-        content: "Conheça a história da Brayan Beef: carnes Angus selecionadas em Porto Fictício�, MS.",
+        content: "Conheça a história da Brayan Beef: carnes Angus selecionadas em Porto Fictício/EX.",
       },
       { property: "og:image", content: "https://brayanbeef.vercel.app/img/picanha.jpg" },
     ],
@@ -75,7 +75,7 @@ function SobrePage() {
               <h2 className="font-display text-3xl">A origem</h2>
               <p className="mt-6 text-sm leading-relaxed text-foreground/70">
                 A Brayan Beef nasceu do amor pela carne de qualidade. Começamos
-                em Porto Fictício�, no coração do Estado Fictício, com um sonho
+                em Porto Fictício, no coração do Estado Fictício, com um sonho
                 simples: oferecer os melhores cortes para quem entende de
                 churrasco.
               </p>

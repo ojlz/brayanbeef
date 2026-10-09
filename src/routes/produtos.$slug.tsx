@@ -18,7 +18,7 @@ export const Route = createFileRoute("/produtos/$slug")({
       { title: `${params.slug.charAt(0).toUpperCase() + params.slug.slice(1)} — Brayan Beef | Carnes Premium` },
       {
         name: "description",
-        content: `${params.slug.charAt(0).toUpperCase() + params.slug.slice(1)} — Carnes premium em Porto Fictício�, MS. Brayan Beef.`,
+        content: `${params.slug.charAt(0).toUpperCase() + params.slug.slice(1)} — Carnes premium em Porto Fictício/EX. Brayan Beef.`,
       },
       { property: "og:title", content: `${params.slug.charAt(0).toUpperCase() + params.slug.slice(1)} — Brayan Beef` },
       { property: "og:image", content: `${SITE_URL}/img/${params.slug}.jpg` },
@@ -89,7 +89,7 @@ function ProductDetailPage() {
           __html: JSON.stringify(
             productJsonLd({
               name: product.name,
-              description: product.description || `${product.name} — Carnes premium em Porto Fictício�, MS`,
+              description: product.description || `${product.name} — Carnes premium em Porto Fictício/EX`,
               image: product.images[0] || "/img/picanha.jpg",
               price: finalPrice,
               unit: product.unit,

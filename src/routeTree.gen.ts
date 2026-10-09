@@ -9,34 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SobreRouteImport } from './routes/sobre'
-import { Route as ProdutosRouteImport } from './routes/produtos'
-import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProdutosSlugRouteImport } from './routes/produtos.$slug'
-import { Route as ApiAnalyticsRouteImport } from './routes/api/analytics'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as ProdutosRouteImport } from './routes/produtos'
+import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as AdminAdminRouteImport } from './routes/admin/_admin'
+import { Route as ApiAnalyticsRouteImport } from './routes/api/analytics'
+import { Route as ProdutosSlugRouteImport } from './routes/produtos.$slug'
 import { Route as AdminAdminIndexRouteImport } from './routes/admin/_admin/index'
-import { Route as ApiGithubWriteRouteImport } from './routes/api/github.write'
-import { Route as ApiGithubReadRouteImport } from './routes/api/github.read'
-import { Route as ApiAuthMeRouteImport } from './routes/api/auth.me'
-import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth.logout'
-import { Route as ApiAuthLoginRouteImport } from './routes/api/auth.login'
-import { Route as ApiAuthInitRouteImport } from './routes/api/auth.init'
-import { Route as ApiAuthChangePasswordRouteImport } from './routes/api/auth.change-password'
-import { Route as AdminAdminProdutosRouteImport } from './routes/admin/_admin/produtos'
-import { Route as AdminAdminLoginRouteImport } from './routes/admin/_admin/login'
-import { Route as AdminAdminDashboardRouteImport } from './routes/admin/_admin/dashboard'
 import { Route as AdminAdminConfiguracoesRouteImport } from './routes/admin/_admin/configuracoes'
+import { Route as AdminAdminDashboardRouteImport } from './routes/admin/_admin/dashboard'
+import { Route as AdminAdminLoginRouteImport } from './routes/admin/_admin/login'
+import { Route as AdminAdminProdutosRouteImport } from './routes/admin/_admin/produtos'
+import { Route as ApiAuthChangePasswordRouteImport } from './routes/api/auth.change-password'
+import { Route as ApiAuthInitRouteImport } from './routes/api/auth.init'
+import { Route as ApiAuthLoginRouteImport } from './routes/api/auth.login'
+import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth.logout'
+import { Route as ApiAuthMeRouteImport } from './routes/api/auth.me'
+import { Route as ApiGithubReadRouteImport } from './routes/api/github.read'
+import { Route as ApiGithubWriteRouteImport } from './routes/api/github.write'
 
-const SobreRoute = SobreRouteImport.update({
-  id: '/sobre',
-  path: '/sobre',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProdutosRoute = ProdutosRouteImport.update({
-  id: '/produtos',
-  path: '/produtos',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -44,19 +39,14 @@ const ContatoRoute = ContatoRouteImport.update({
   path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ProdutosRoute = ProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProdutosSlugRoute = ProdutosSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ProdutosRoute,
-} as any)
-const ApiAnalyticsRoute = ApiAnalyticsRouteImport.update({
-  id: '/api/analytics',
-  path: '/api/analytics',
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminAdminRoute = AdminAdminRouteImport.update({
@@ -64,54 +54,24 @@ const AdminAdminRoute = AdminAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAnalyticsRoute = ApiAnalyticsRouteImport.update({
+  id: '/api/analytics',
+  path: '/api/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProdutosSlugRoute = ProdutosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProdutosRoute,
+} as any)
 const AdminAdminIndexRoute = AdminAdminIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminAdminRoute,
 } as any)
-const ApiGithubWriteRoute = ApiGithubWriteRouteImport.update({
-  id: '/api/github/write',
-  path: '/api/github/write',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiGithubReadRoute = ApiGithubReadRouteImport.update({
-  id: '/api/github/read',
-  path: '/api/github/read',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
-  id: '/api/auth/me',
-  path: '/api/auth/me',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
-  id: '/api/auth/logout',
-  path: '/api/auth/logout',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
-  id: '/api/auth/login',
-  path: '/api/auth/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthInitRoute = ApiAuthInitRouteImport.update({
-  id: '/api/auth/init',
-  path: '/api/auth/init',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAuthChangePasswordRoute = ApiAuthChangePasswordRouteImport.update({
-  id: '/api/auth/change-password',
-  path: '/api/auth/change-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminAdminProdutosRoute = AdminAdminProdutosRouteImport.update({
-  id: '/produtos',
-  path: '/produtos',
-  getParentRoute: () => AdminAdminRoute,
-} as any)
-const AdminAdminLoginRoute = AdminAdminLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
+const AdminAdminConfiguracoesRoute = AdminAdminConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
   getParentRoute: () => AdminAdminRoute,
 } as any)
 const AdminAdminDashboardRoute = AdminAdminDashboardRouteImport.update({
@@ -119,10 +79,50 @@ const AdminAdminDashboardRoute = AdminAdminDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AdminAdminRoute,
 } as any)
-const AdminAdminConfiguracoesRoute = AdminAdminConfiguracoesRouteImport.update({
-  id: '/configuracoes',
-  path: '/configuracoes',
+const AdminAdminLoginRoute = AdminAdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => AdminAdminRoute,
+} as any)
+const AdminAdminProdutosRoute = AdminAdminProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => AdminAdminRoute,
+} as any)
+const ApiAuthChangePasswordRoute = ApiAuthChangePasswordRouteImport.update({
+  id: '/api/auth/change-password',
+  path: '/api/auth/change-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthInitRoute = ApiAuthInitRouteImport.update({
+  id: '/api/auth/init',
+  path: '/api/auth/init',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
+  id: '/api/auth/login',
+  path: '/api/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthMeRoute = ApiAuthMeRouteImport.update({
+  id: '/api/auth/me',
+  path: '/api/auth/me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGithubReadRoute = ApiGithubReadRouteImport.update({
+  id: '/api/github/read',
+  path: '/api/github/read',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiGithubWriteRoute = ApiGithubWriteRouteImport.update({
+  id: '/api/github/write',
+  path: '/api/github/write',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -271,18 +271,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sobre': {
-      id: '/sobre'
-      path: '/sobre'
-      fullPath: '/sobre'
-      preLoaderRoute: typeof SobreRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/produtos': {
-      id: '/produtos'
-      path: '/produtos'
-      fullPath: '/produtos'
-      preLoaderRoute: typeof ProdutosRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -292,25 +285,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/produtos': {
+      id: '/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof ProdutosRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/produtos/$slug': {
-      id: '/produtos/$slug'
-      path: '/$slug'
-      fullPath: '/produtos/$slug'
-      preLoaderRoute: typeof ProdutosSlugRouteImport
-      parentRoute: typeof ProdutosRoute
-    }
-    '/api/analytics': {
-      id: '/api/analytics'
-      path: '/api/analytics'
-      fullPath: '/api/analytics'
-      preLoaderRoute: typeof ApiAnalyticsRouteImport
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/_admin': {
@@ -320,6 +306,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/analytics': {
+      id: '/api/analytics'
+      path: '/api/analytics'
+      fullPath: '/api/analytics'
+      preLoaderRoute: typeof ApiAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produtos/$slug': {
+      id: '/produtos/$slug'
+      path: '/$slug'
+      fullPath: '/produtos/$slug'
+      preLoaderRoute: typeof ProdutosSlugRouteImport
+      parentRoute: typeof ProdutosRoute
+    }
     '/admin/_admin/': {
       id: '/admin/_admin/'
       path: '/'
@@ -327,67 +327,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminIndexRouteImport
       parentRoute: typeof AdminAdminRoute
     }
-    '/api/github/write': {
-      id: '/api/github/write'
-      path: '/api/github/write'
-      fullPath: '/api/github/write'
-      preLoaderRoute: typeof ApiGithubWriteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/github/read': {
-      id: '/api/github/read'
-      path: '/api/github/read'
-      fullPath: '/api/github/read'
-      preLoaderRoute: typeof ApiGithubReadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/me': {
-      id: '/api/auth/me'
-      path: '/api/auth/me'
-      fullPath: '/api/auth/me'
-      preLoaderRoute: typeof ApiAuthMeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/logout': {
-      id: '/api/auth/logout'
-      path: '/api/auth/logout'
-      fullPath: '/api/auth/logout'
-      preLoaderRoute: typeof ApiAuthLogoutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/login': {
-      id: '/api/auth/login'
-      path: '/api/auth/login'
-      fullPath: '/api/auth/login'
-      preLoaderRoute: typeof ApiAuthLoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/init': {
-      id: '/api/auth/init'
-      path: '/api/auth/init'
-      fullPath: '/api/auth/init'
-      preLoaderRoute: typeof ApiAuthInitRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/auth/change-password': {
-      id: '/api/auth/change-password'
-      path: '/api/auth/change-password'
-      fullPath: '/api/auth/change-password'
-      preLoaderRoute: typeof ApiAuthChangePasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin/_admin/produtos': {
-      id: '/admin/_admin/produtos'
-      path: '/produtos'
-      fullPath: '/admin/produtos'
-      preLoaderRoute: typeof AdminAdminProdutosRouteImport
-      parentRoute: typeof AdminAdminRoute
-    }
-    '/admin/_admin/login': {
-      id: '/admin/_admin/login'
-      path: '/login'
-      fullPath: '/admin/login'
-      preLoaderRoute: typeof AdminAdminLoginRouteImport
+    '/admin/_admin/configuracoes': {
+      id: '/admin/_admin/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/admin/configuracoes'
+      preLoaderRoute: typeof AdminAdminConfiguracoesRouteImport
       parentRoute: typeof AdminAdminRoute
     }
     '/admin/_admin/dashboard': {
@@ -397,12 +341,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAdminDashboardRouteImport
       parentRoute: typeof AdminAdminRoute
     }
-    '/admin/_admin/configuracoes': {
-      id: '/admin/_admin/configuracoes'
-      path: '/configuracoes'
-      fullPath: '/admin/configuracoes'
-      preLoaderRoute: typeof AdminAdminConfiguracoesRouteImport
+    '/admin/_admin/login': {
+      id: '/admin/_admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminAdminLoginRouteImport
       parentRoute: typeof AdminAdminRoute
+    }
+    '/admin/_admin/produtos': {
+      id: '/admin/_admin/produtos'
+      path: '/produtos'
+      fullPath: '/admin/produtos'
+      preLoaderRoute: typeof AdminAdminProdutosRouteImport
+      parentRoute: typeof AdminAdminRoute
+    }
+    '/api/auth/change-password': {
+      id: '/api/auth/change-password'
+      path: '/api/auth/change-password'
+      fullPath: '/api/auth/change-password'
+      preLoaderRoute: typeof ApiAuthChangePasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/init': {
+      id: '/api/auth/init'
+      path: '/api/auth/init'
+      fullPath: '/api/auth/init'
+      preLoaderRoute: typeof ApiAuthInitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/login': {
+      id: '/api/auth/login'
+      path: '/api/auth/login'
+      fullPath: '/api/auth/login'
+      preLoaderRoute: typeof ApiAuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/me': {
+      id: '/api/auth/me'
+      path: '/api/auth/me'
+      fullPath: '/api/auth/me'
+      preLoaderRoute: typeof ApiAuthMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/github/read': {
+      id: '/api/github/read'
+      path: '/api/github/read'
+      fullPath: '/api/github/read'
+      preLoaderRoute: typeof ApiGithubReadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/github/write': {
+      id: '/api/github/write'
+      path: '/api/github/write'
+      fullPath: '/api/github/write'
+      preLoaderRoute: typeof ApiGithubWriteRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }

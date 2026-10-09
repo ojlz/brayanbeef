@@ -11,8 +11,8 @@ import type { Product } from "@/types/product";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Brayan Beef — Carnes Premium em Porto Fictício�, MS" },
-      { name: "description", content: "Brayan Beef — Carnes Angus premium em Porto Fictício�, MS. Aqui fazemos do seu jeito!" },
+      { title: "Brayan Beef — Carnes Premium em Porto Fictício/EX" },
+      { name: "description", content: "Brayan Beef — Carnes Angus premium em Porto Fictício/EX. Aqui fazemos do seu jeito!" },
       { property: "og:title", content: "Brayan Beef — Carnes Premium" },
       { property: "og:image", content: "https://brayanbeef.vercel.app/img/hero-brayan.jpg" },
     ],
@@ -390,7 +390,7 @@ function Index() {
             <ScaleIn delay={0.15}>
               <div className="h-full min-h-[400px] rounded-2xl overflow-hidden shadow-card bg-[#1a1a1a] flex items-center justify-center">
                 <a
-                  href="https://www.google.com/maps/search/Brayan+Beef+Porto Fictício�"
+                  href="https://www.google.com/maps/search/Brayan+Beef+Porto Fictício"
                   target="_blank"
                   rel="noreferrer"
                   className="flex flex-col items-center gap-4 text-center p-8 hover:text-accent transition-colors"

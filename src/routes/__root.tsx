@@ -97,16 +97,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Brayan Beef — Carnes Premium em Porto Fictício�, MS" },
+      { title: "Brayan Beef — Carnes Premium em Porto Fictício/EX" },
       {
         name: "description",
         content:
-          "Brayan Beef — Carnes Angus premium em Porto Fictício�, MS. Picanha, costela, ancho e fraldinha de alta qualidade. Açougue artesanal com entrega pelo WhatsApp.",
+          "Brayan Beef — Carnes Angus premium em Porto Fictício/EX. Picanha, costela, ancho e fraldinha de alta qualidade. Açougue artesanal com entrega pelo WhatsApp.",
       },
-      { property: "og:title", content: "Brayan Beef — Carnes Premium em Porto Fictício�, MS" },
+      { property: "og:title", content: "Brayan Beef — Carnes Premium em Porto Fictício/EX" },
       {
         property: "og:description",
-        content: "Carnes Angus premium em Porto Fictício�, MS. Picanha, costela, ancho e fraldinha selecionados.",
+        content: "Carnes Angus premium em Porto Fictício/EX. Picanha, costela, ancho e fraldinha selecionados.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
@@ -114,8 +114,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "pt_BR" },
       { property: "og:image", content: `${SITE_URL}/img/picanha.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Brayan Beef — Carnes Premium em Porto Fictício�, MS" },
-      { name: "twitter:description", content: "Carnes Angus premium em Porto Fictício�, MS. Picanha, costela, ancho e fraldinha selecionados." },
+      { name: "twitter:title", content: "Brayan Beef — Carnes Premium em Porto Fictício/EX" },
+      { name: "twitter:description", content: "Carnes Angus premium em Porto Fictício/EX. Picanha, costela, ancho e fraldinha selecionados." },
       { name: "twitter:image", content: `${SITE_URL}/img/picanha.jpg` },
       { name: "theme-color", content: "#8B0000" },
       { name: "robots", content: "index, follow" },
