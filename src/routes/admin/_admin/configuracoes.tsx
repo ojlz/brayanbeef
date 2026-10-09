@@ -215,7 +215,7 @@ function ConfiguracoesPage() {
                 onChange={(e) =>
                   setSettings({ ...settings, phone: e.target.value })
                 }
-                placeholder="(00) 90000-0009"
+                placeholder="(00) 90000-0000"
                 className="w-full border border-line bg-transparent px-4 py-2 text-sm focus:border-accent focus:outline-none transition-colors"
               />
             </div>

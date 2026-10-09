@@ -8,16 +8,16 @@ import { useBusiness } from "@/hooks/useBusiness";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Brayan Beef | Açougue em Porto Fictício�, MS" },
+      { title: "Contato — Brayan Beef | Açougue em Porto Fictício/EX" },
       {
         name: "description",
         content:
-          "Entre em contato com a Brayan Beef em Porto Fictício�, MS. WhatsApp, telefone e localização. Faça seu pedido!",
+          "Entre em contato com a Brayan Beef em Porto Fictício/EX. WhatsApp, telefone e localização. Faça seu pedido!",
       },
       { property: "og:title", content: "Contato — Brayan Beef" },
       {
         property: "og:description",
-        content: "Entre em contato com a Brayan Beef em Porto Fictício�, MS. WhatsApp, telefone e localização.",
+        content: "Entre em contato com a Brayan Beef em Porto Fictício/EX. WhatsApp, telefone e localização.",
       },
       { property: "og:image", content: "https://brayanbeef.vercel.app/img/picanha.jpg" },
     ],
@@ -31,13 +31,13 @@ function ContatoPage() {
   const street = business?.address?.street || "Av. Fictícia";
   const number = business?.address?.number || "333";
   const neighborhood = business?.address?.neighborhood || "Centro";
-  const city = business?.address?.city || "Porto Fictício�";
-  const state = business?.address?.state || "MS";
+  const city = business?.address?.city || "Porto Fictício";
+  const state = business?.address?.state || "EX";
   const zip = business?.address?.zip || "00000-000";
   const phone = business?.phone || "(00) 90000-0009";
   const whatsapp = business?.whatsapp || "5500090000009";
-  const lat = business?.coordinates?.lat || -23.0308;
-  const lng = business?.coordinates?.lng || -54.1941;
+  const lat = business?.coordinates?.lat || -9.1111;
+  const lng = business?.coordinates?.lng || -130.2222;
 
   const formatHours = (label: string, data: { open: string; close: string } | null) => {
     if (!data) return `${label}: Fechado`;

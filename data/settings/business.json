@@ -8,12 +8,12 @@
     "number": "333",
     "neighborhood": "Centro",
     "city": "Porto Fictício",
-    "state": "MS",
+    "state": "EX",
     "zip": "00000-000"
   },
   "coordinates": {
-    "lat": -23.0308,
-    "lng": -54.1941
+    "lat": -9.1111,
+    "lng": -130.2222
   },
   "hours": {
     "seg": {
@@ -50,7 +50,7 @@
     "reviews": 63
   },
   "social": {
-    "instagram": "https://instagram.com/brayanbeef",
-    "facebook": "https://facebook.com/brayanbeef"
+    "instagram": "https://instagram.com/brayanbeef.site",
+    "facebook": "https://facebook.com/brayanbeef.site"
   }
 }

@@ -12,15 +12,15 @@ export function localBusinessJsonLd() {
     address: {
       "@type": "PostalAddress",
       streetAddress: "Av. Fictícia, 333",
-      addressLocality: "Porto Fictício�",
-      addressRegion: "MS",
+      addressLocality: "Porto Fictício",
+      addressRegion: "EX",
       postalCode: "00000-000",
       addressCountry: "BR",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: -23.0308,
-      longitude: -54.1941,
+      latitude: -9.1111,
+      longitude: -130.2222,
     },
     openingHoursSpecification: [
       {

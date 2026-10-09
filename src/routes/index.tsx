@@ -73,8 +73,8 @@ function Index() {
   const street = business?.address?.street || "Av. Fictícia";
   const number = business?.address?.number || "333";
   const neighborhood = business?.address?.neighborhood || "Centro";
-  const city = business?.address?.city || "Porto Fictício�";
-  const state = business?.address?.state || "MS";
+  const city = business?.address?.city || "Porto Fictício";
+  const state = business?.address?.state || "EX";
   const whatsapp = business?.whatsapp || "5500090000009";
   const phone = business?.phone || "(00) 90000-0009";
 
